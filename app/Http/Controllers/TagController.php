@@ -16,6 +16,11 @@ class TagController extends Controller
         return Tag::paginate(10);
     }
 
+    public function getPosts(Tag $tag)
+    {
+        return $tag->posts()->with(['user', 'comments'])->paginate(10);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
