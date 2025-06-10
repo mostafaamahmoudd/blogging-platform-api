@@ -6,16 +6,16 @@ Route::post('/register', [App\Http\Controllers\API\AuthController::class, 'regis
 Route::post('/login', [App\Http\Controllers\API\AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::apiResource('posts', App\Http\Controllers\PostController::class);
+    Route::apiResource('posts', \App\Http\Controllers\API\PostController::class);
 
-    Route::apiResource('comments', App\Http\Controllers\CommentController::class);
+    Route::apiResource('comments', \App\Http\Controllers\API\CommentController::class);
 
-    Route::apiResource('tags', App\Http\Controllers\TagController::class);
+    Route::apiResource('tags', \App\Http\Controllers\API\TagController::class);
 
-    Route::apiResource('search', App\Http\Controllers\SearchController::class);
+    Route::apiResource('search', \App\Http\Controllers\API\SearchController::class);
 
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
 });
 
-Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);
-Route::get('/posts/{post}', [App\Http\Controllers\PostController::class, 'show']);
+Route::get('/posts', [\App\Http\Controllers\API\PostController::class, 'index']);
+Route::get('/posts/{post}', [\App\Http\Controllers\API\PostController::class, 'show']);
