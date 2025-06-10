@@ -12,6 +12,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::apiResource('tags', App\Http\Controllers\TagController::class);
 
+    Route::apiResource('search', App\Http\Controllers\SearchController::class);
+
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
 });
 
